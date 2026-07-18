@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mom's Bonbons</title>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<script>
+const faders = document.querySelectorAll('.fade-in');
+
+window.addEventListener('scroll', () => {
+  faders.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 100) {
+      el.classList.add('show');
+    }
+  });
+});
+</script>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="logo">
+    <img src="logo.png">
+  </div>
+
+
+<div class="page-break">
+
+
+  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+  <div class="nav-links" id="navLinks">
+    <a href="#about">About</a>
+    <a href="#story">Story</a>
+    <a href="#menu">Menu</a>
+    <a href="#speciality">Speciality</a>
+    <a href="#contact">Contact</a>
+  </div>
+  </div>
+</nav>
+
+<!--BG VID SLIDE-->>
+
+
+</div>
+<!-- HERO -->
+
+
+<section class="hero">
+  <video autoplay muted loop playsinline class="hero-video">
+    <source src="intro vod.mp4" type="video/mp4">
+  </video>
+
+  <div class="hero-content">
+    <div class="hero-box">
+      <h1>Mom's Bonbons</h1>
+      <p>AS GENTLE AS MOTHERS LOVE💗</p>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<!-- STORY -->
+
+<div class="story-container">
+<section class="story">
+  <div class="story-content">
+    <div class="title-box">
+      <h2>Our Story</h2>
+      <img src="logo.png" class="doodle-left">
+    </div>
+
+    <p>
+      We started with a simple idea — to create something meaningful that connects people and experiences. 
+      What began as a small vision has grown into a journey shaped by passion, creativity, and innovation. 
+      Every step we take is driven by our commitment to design, simplicity, and impact.
+    </p>
+  <img src="shop.jpeg" alt="Our Story Image" class="story-img">
+</div>
+  </div>
+  
+</section>
+  
+  </div>
+</section>
+<br>
+
+<!-- 🌸 PARALLAX ONLY HERE -->
+
+<section class="parallax-js">
+  <div class="parallax-bg"></div>
+
+  <div class="parallax-content">
+    <h2>Made with Mother's Love 💗</h2>
+  </div>
+</section>
+
+<script>
+const parallax = document.querySelector('.parallax-bg');
+const section = document.querySelector('.parallax-js');
+
+window.addEventListener('scroll', () => {
+  const rect = section.getBoundingClientRect();
+  const windowHeight = window.innerHeight;
+
+  if (rect.top < windowHeight && rect.bottom > 0) {
+
+    let progress = (windowHeight - rect.top) / (windowHeight + rect.height);
+
+    // VERY CONTROLLED movement
+    let move = (progress - 0.5) * 40; // max ±20px
+
+    // combine center + movement
+    parallax.style.transform = `translateY(calc(-50% + ${move}px))`;
+  }
+});
+</script>
+</body>
+
+
+</div>
+</section>
+<section id="menu" class="fade-in">
+  <h1>Our Best Sellers</h1>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <head>
+    <style>
+
+
+
+/* 🌸 ROUND CUTE CARDS */
+.menu-card {
+  text-align: center;
+  background: #fff;
+  border-radius: 25px;
+  padding: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  transition: 0.4s;
+  position: relative;
+}
+
+/* 🍓 ROUND IMAGE */
+.menu-card img {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+
+  border: 5px solid #ffb6c1;
+  padding: 5px;
+  background: #fff;
+
+  box-shadow: 0 5px 15px rgba(255, 133, 162, 0.4);
+  transition: 0.4s;
+}
+
+/* ✨ HOVER POP */
+.menu-card:hover img {
+  transform: scale(1.1) rotate(3deg);
+  border-color: #ff85a2;
+  box-shadow: 0 0 25px rgba(255, 133, 162, 0.8);
+}
+
+/* 💗 TEXT */
+.menu-card h3 {
+  margin-top: 12px;
+  color: #d6336c;
+}
+
+/* ➜ ARROW CONNECTION */
+.menu-card::after {
+  content: "➜";
+  position: absolute;
+  right: -25px;
+  top: 45%;
+  font-size: 28px;
+  color: #ff85a2;
+  animation: bounceArrow 1s infinite;
+}
+
+/* REMOVE LAST ARROW */
+.menu-card:last-child::after {
+  content: "";
+}
+
+/* 🎯 ARROW ANIMATION */
+@keyframes bounceArrow {
+  0% { transform: translateX(0); }
+  50% { transform: translateX(6px); }
+  100% { transform: translateX(0); }
+}
+
+/* 🌼 FLOATING DOODLES */
+.menu-card::before {
+  content: "✨";
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  font-size: 18px;
+  animation: float 3s infinite ease-in-out;
+}
+
+/* 🎀 FLOAT ANIMATION */
+@keyframes float {
+  0% { transform: translateY(0); opacity: 0.6; }
+  50% { transform: translateY(-8px); opacity: 1; }
+  100% { transform: translateY(0); opacity: 0.6; }
+}
+
+/* 💫 CARD HOVER LIFT */
+.menu-card:hover {
+  transform: translateY(-10px);
+}
+ 
+
+ 
+</style>
+  </head>
+
+  <div class="menu-grid">
+    
+
+    <div class="menu-card">
+      <img src="3 choco mouse.jpeg">
+      <h3>Triple Chocolate Mousse</h3>
+    </div>
+
+    <div class="menu-card">
+      <img src="bluberry tiramisu.jpeg">
+      <h3>Blueberry Tiramisu</h3>
+    </div>
+
+    <div class="menu-card">
+       <img src="caramel crunch.jpeg">
+      <h3>Caramel Crunch</h3>
+    </div>
+
+    <div class="menu-card">
+       <img src="caramel tiramisu.jpeg">
+      <h3>Caramel Tiramisu</h3>
+    </div>
+
+    <div class="menu-card">
+       <img src="millionare browine.jpeg">
+      <h3 >Millionaire Browine </h3>
+    </div>
+
+    <div class="menu-card">
+     <img src="cookies n cream.jpeg">
+      <h3>Cookies and Cream brownies</h3>
+    </div>
+
+    <div class="menu-card">
+       <img src="cocunut macroons.jpeg">
+      <h3>Coconut Macroons</h3>
+      <p class="price">₹260</p>
+    </div>
+
+    <div class="menu-card">
+     <img src="korean bun.jpeg">
+      <h3>Korean Garic Bun </h3>
+    </div>
+
+
+  </div>
+
+  <!-- CENTER BUTTON -->
+  <div style="text-align:center; margin-top:30px;">
+    <a href="fullmenu.html" class="full-menu-btn">View Full Menu</a>
+  </div>
+
+
+<!-- SPECIALITY -->
+
+<section id="speciality" class="luxury-speciality">
+
+  <!-- Floating particles -->
+  <div class="particles"></div>
+
+  <div class="content">
+    <h1 class="title">Our Speciality</h1>
+
+    <p class="tagline">
+      Every dessert is made by mother’s hand —  
+      as soft, warm, and comforting as her love.
+    </p>
+    <img src="cake our speciality.png" class="doodle-left">
+
+    <div class="divider"></div>
+
+    <p class="description ">
+      We don’t just create desserts, we craft emotions.  
+      From premium buns to rich handcrafted chocolates, every bite reflects 
+      purity, elegance, and passion.
+    </p>
+
+    <p class="description  delay">
+      Every creation is made fresh, with our own hands — 
+      carrying the warmth of home and the touch of luxury.
+    </p>
+
+    <p class="description  delay2">
+      We are not just a bakery —  
+      we are a journey of love, continuously growing to fulfil 
+      your cravings and exceed expectations.
+    </p>
+
+    <p class="closing delay3">
+      It’s never just about desserts…  
+      it’s about the feeling you take with you.
+    </p>
+    
+  </div>
+</section>
+</div>
+
+<!-- CONTACT -->
+
+
+<section id="contact">
+  <div class="container">
+    
+    <h1>Contact Us</h1>
+    <div class="line"></div>
+
+    <div class="tabs">
+      <span>Contact</span>
+      <span>Phone</span>
+    </div>
+
+    <div class="details">
+      <p><i class="fas fa-phone"></i> +91 9876543210</p>
+      <p><i class="fas fa-envelope"></i> momsbonbons@gmail.com</p>
+    </div>
+
+  
+<section class="locations-section">
+
+
+  <!DOCTYPE html>
+<html>
+<head>
+<title>Our Locations</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+/* background + layout (premium look) */
+body{
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    background:linear-gradient(120deg,#fff0f5,#ffe4ec,#fff);
+}
+
+.locations-section{
+    padding:80px 20px;
+    text-align:center;
+}
+
+.locations-title{
+    font-size:48px;
+    font-weight:600;
+    color:#c2185b;
+    margin-bottom:60px;
+}
+
+/* GRID */
+.locations-container{
+    display:flex;
+    justify-content:center;
+    gap:40px;
+    flex-wrap:wrap;
+}
+
+/* ===== YOUR CSS (UNCHANGED) ===== */
+.location-box{
+    width:280px;
+    padding:40px 30px;
+    border-radius:25px;
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(12px);
+    border:2px solid #ffc0cb;
+    box-shadow:0 10px 40px rgba(255,105,135,.25);
+    transition:0.4s;
+    font-family:'Poppins',sans-serif;
+}
+.location-box:hover{
+    transform:translateY(-15px) scale(1.05);
+    box-shadow:0 20px 60px rgba(255,105,135,.45);
+    border-color:#ff4d6d;
+}
+.location-box h3{
+    font-size:26px;
+    color:#c2185b;
+    margin-bottom:10px;
+    font-weight:600;
+}
+.location-box p{
+    font-size:15px;
+    color:#555;
+    margin-bottom:25px;
+}
+.location-box button{
+    border:none;
+    padding:12px 28px;
+    border-radius:30px;
+    font-weight:600;
+    font-size:15px;
+    color:white;
+    cursor:pointer;
+    background:linear-gradient(45deg,#ff4d6d,#ff85a2);
+    box-shadow:0 8px 20px rgba(255,105,135,.4);
+    transition:0.3s;
+}
+.location-box button:hover{
+    transform:scale(1.12);
+    box-shadow:0 15px 35px rgba(255,105,135,.6);
+}
+@media(max-width:768px){
+    .locations-title{font-size:32px;}
+    .location-box{width:90%;}
+}
+
+</style>
+</head>
+
+<body>
+
+
+    <h1 class="locations-title">Our Store Locations</h1>
+
+    <div class="locations-container">
+
+        <!-- Chengalpattu -->
+        <div class="location-box">
+            <h3>Rahamath Mall</h3>
+            <p>Chengalpattu</p>
+            <a href="map.html?place=Rahamath Mall Chengalpattu">
+                <button>View Location</button>
+            </a>
+        </div>
+
+        <!-- Pallavaram -->
+        <div class="location-box">
+        
+            <h3>Pallavaram</h3>
+            <p>Chennai</p>
+          <a href="&name=Pallavaram"></a>>
+                <button>View Location</button>
+            </a>
+        </div>
+
+  
+        <!-- Vallam -->
+      <div class="location-box">
+    <h3>Vallam</h3>
+    <p>Chengalpattu</p>
+    <a href="map.html?place=12.7504,79.9470&name=Vallam Chengalpattu">
+        <button>View Location</button>
+    </a>
+</div>
+        </div>
+
+    </div>
+</section>
+
+</body>
+
+
+  </div>
+</section>

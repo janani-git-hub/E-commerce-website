@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Mom's Bonbons</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- ⭐ PREMIUM GOOGLE FONTS -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+html{scroll-behavior:smooth;}
+
+body{
+ margin:0;
+ font-family:'Poppins',sans-serif;
+ background:transparent;
+ color:white;
+}
+
+/* HEADINGS FONT */
+h1,h2,h3,.logo{
+ font-family:'Playfair Display',serif;
+ letter-spacing:.5px;
+}
+
+/* NAVBAR */
+nav{
+ position:fixed;
+ top:0; width:100%; z-index:999;
+ backdrop-filter:blur(12px);
+ background:rgba(255,255,255,0.15);
+ display:flex;justify-content:space-between;
+ padding:12px 40px;align-items:center;
+ box-shadow:0 2px 15px rgba(0,0,0,.2)
+}
+
+.logo{font-size:28px;color:#ff6f91;text-shadow:0 0 12px #ff9db2}
+.nav-links a{margin:0 15px;text-decoration:none;color:white;font-weight:600}
+.cart{font-size:22px;color:white}
+#count{background:#ff4d6d;color:#fff;border-radius:50%;padding:3px 7px;font-size:12px}
+
+/* 🎥 FULL BACKGROUND VIDEO */
+#bgVideo{
+ position:fixed;
+ right:0;
+ bottom:0;
+ min-width:100%;
+ min-height:100%;
+ object-fit:cover;
+ z-index:-1;
+ filter:brightness(40%);
+}
+
+/* SECTION */
+section{
+ padding:130px 7% 90px;
+}
+h1{
+ text-align:center;
+ font-size:42px;
+ color:#fff;
+ text-shadow:0 0 20px rgba(255,150,180,.7);
+}
+
+/* FADE */
+.fade{opacity:0;transform:translateY(40px);transition:1s}
+.show{opacity:1;transform:translateY(0)}
+
+/* 🍰 MENU GRID */
+.menu-grid{
+ display:flex;
+ flex-wrap:wrap;
+ justify-content:center;
+ gap:70px;
+ margin-top:70px
+}
+
+/* 💎 GLASS MENU CARD */
+.menu-card{
+ width:230px;
+ background:rgba(255,255,255,0.18);
+ backdrop-filter:blur(16px);
+ border-radius:50px;
+ padding:110px 20px 30px;
+ box-shadow:0 25px 45px rgba(0,0,0,.35);
+ border:1px solid rgba(255,255,255,.35);
+ text-align:center;
+ position:relative;
+ transition:.4s
+}
+.menu-card:hover{transform:translateY(-15px) scale(1.06)}
+
+.menu-card img{
+ width:150px;height:150px;border-radius:50%;
+ object-fit:cover;position:absolute;top:-75px;left:50%;
+ transform:translateX(-50%);
+ border:8px solid #fff;
+ box-shadow:0 15px 30px rgba(0,0,0,.4)
+}
+
+.menu-card h3{margin-top:10px}
+.price{color:#ff8fab;font-size:22px;font-weight:bold;margin:10px}
+
+
+
+/* WHATSAPP CHECKOUT BUTTON */
+.whatsapp-btn{
+ position:fixed;
+ bottom:25px;
+ right:25px;
+ background:#25D366;
+ color:white;
+ padding:16px 22px;
+ border-radius:50px;
+ font-weight:bold;
+ box-shadow:0 10px 25px rgba(0,0,0,.4);
+ cursor:pointer;
+ z-index:999;
+ display:none;
+}
+.whatsapp-btn:hover{transform:scale(1.1)}
+
+
+
+
+/* BUTTON */
+.cart-btn{
+ border:none;padding:12px 28px;border-radius:30px;
+ background:linear-gradient(45deg,#ff4d6d,#ff85a2);
+ color:#fff;font-weight:bold;cursor:pointer;
+ box-shadow:0 10px 25px rgba(255,105,135,.5);
+ transition:.3s
+}
+.cart-btn:hover{transform:scale(1.1)}
+
+/* 📱 MOBILE RESPONSIVE */
+@media(max-width:768px){
+
+ nav{padding:12px 20px}
+ .logo{font-size:22px}
+
+ h1{font-size:30px}
+
+ .menu-grid{gap:90px}
+
+ .menu-card{
+   width:85%;
+   padding:110px 20px 30px;
+ }
+
+ .menu-card img{
+   width:140px;height:140px;top:-70px;
+ }
+}
+</style>
+</head>
+
+<body>
+
+    <div class="whatsapp-btn" onclick="sendWhatsApp()">
+📲 Checkout on WhatsApp
+</div>
+
+
+<!-- VIDEO -->
+<video autoplay muted loop playsinline id="bgVideo">
+  <source src="desser-bg.mp4.mp4" type="video/mp4">
+</video>
+
+<nav>
+<div class="logo">Mom's Bonbons</div>
+<div class="nav-links">
+<a href="#menu">Menu</a>
+<span class="cart"><i class="fa fa-shopping-cart"></i><span id="count">0</span></span>
+</div>
+</nav>
+<div class="menu-grid" id="menuGrid">
+<section id="menu" class="fade">
+<h1>Our Full Menu</h1>
+<div class="menu-grid">
+
+<script>
+const desserts=[
+["Triple Chocolate Mousse",260,"3 choco mouse.jpeg"],
+["Blueberry Tiramisu",220,"bluberry tiramisu.jpeg"],
+["Caramel Crunch",240,"caramel crunch.jpeg"],
+["Caramel Tiramisu",230,"caramel tiramisu.jpeg"],
+["Millionaire Brownie",200,"millionare browine.jpeg"],
+["Cookies Cream Brownie",210,"cookies n cream.jpeg"],
+["Coconut Macaroons",180,"cocunut macroons.jpeg"],
+["Korean Garlic Bun",190,"korean bun.jpeg"],
+["Custard Banana Biscuits",170,"custard,banana bis.jpeg"],
+["Crunch Cake",250,"crunch cake.jpeg"],
+["Tiramisu",240,"Tiramisu.jpeg"],
+["Lotus Biscoff",220,"biscoff bis.jpeg"],
+["Rasamalai Blondie",260,"Rasamalai blondie.jpeg"],
+["Brownie",200,"brownie.jpeg"],
+["Belgian Waffle",210,"waffle.webp"],
+["Skillet cookie",180,"skillet cookie.jpeg"],
+["Dark chocolate Truffle",230,"dct.jpeg"],
+["Chocolate Chip Cookies",200,"ccc.jpeg"],
+["Hot chocolate",210,"hot choc.avif"],
+["Rose Petal Chocolate",190,"rose chco.jpg"],
+["Oreo Shake",180,"orea.webp"],
+["Cold Coffee",150,"coffee.jpg"],
+["Choco lava cake",160,"lava.jpeg"],
+["Choco Donuts",180,"donut.jpg"]
+];
+
+let html="";
+desserts.forEach(d=>{
+html+=`<div class="menu-card fade">
+<img src="${d[2]}">
+<h3>${d[0]}</h3>
+<p class="price">₹${d[1]}</p>
+
+<button class="cart-btn" onclick="addCart('${d[0]}',${d[1]})">
+Add to Cart
+</button>
+
+</div>`;
+});
+document.write(html);
+</script>
+
+</div>
+</section>
+
+<script>
+let count=0;
+function addCart(){count++;document.getElementById("count").innerText=count}
+
+const faders=document.querySelectorAll('.fade');
+window.addEventListener('scroll',()=>{
+faders.forEach(el=>{
+if(el.getBoundingClientRect().top<window.innerHeight-80)
+el.classList.add('show');
+})
+});
+</script>
+
+</body>
+</html>
